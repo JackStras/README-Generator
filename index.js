@@ -26,7 +26,7 @@ const questions = [
     {
         type: "input",
         name: "contribution",
-        message: "Provide any contributors."
+        message: "Provide any contributors. If none, please enter N/A."
     },
     {
         type: "input",
@@ -58,7 +58,7 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions).then((response) => {
         const markdownText = generateMarkdown(response)
-        writeToFile("ReadTest.md", markdownText)
+        writeToFile("README.md", markdownText)
     })
 }
 

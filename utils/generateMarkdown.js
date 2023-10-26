@@ -10,8 +10,6 @@ function renderLicenseBadge(license) {
   }
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
 function renderLicenseLink(license) {
   if (license === "None") {
     return ""
@@ -24,21 +22,62 @@ function renderLicenseLink(license) {
   }
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
 function renderLicenseSection(license) {
   if (license === "None") {
-    return ""
+    return "N/A"
   } else {
     return license
   }
 }
 
-// TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+  const badge = renderLicenseBadge(data.license)
+  const link = renderLicenseLink(data.license)
+  const licenseSection = renderLicenseSection(data.license)
 
+  return `
+  ${badge}
+  # ${data.title}
 
-  return `# ${data.title}
+  ## Table of Contents
+
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [Questions](#questions)
+
+  ## Description
+
+  ${data.description}
+
+  ## Installation
+  
+  ${data.install}
+
+  ## Usage
+
+  ${data.usage}
+
+  ## License
+
+  ${licenseSection}
+  ${link}
+
+  ## Contributing
+
+  ${data.contribution}
+
+  ## Tests
+
+  ${data.test}
+
+  ## Questions
+
+  My GitHub is [${data.username}](https://github.com/${data.username}).
+  If you have any further questions, you can email me at ${data.email}.
 
 `;
 }
